@@ -1,6 +1,9 @@
 import Exception.InputException;
+
+import java.io.IOException;
+
 public class Menu {
-    public static void start() {
+    public static void start() throws IOException {
         StudentManager studentManager = new StudentManager();
         do {
             System.out.println("---- CHƯƠNG TRÌNH QUẢN LÝ SINH VIÊN ----\n" +
@@ -40,9 +43,10 @@ public class Menu {
                     studentManager.sortStudent();
                     break;
                 case 6:
-                    studentManager.readFile();
+                    studentManager.readFromFile();
                     break;
                 case 7:
+                    studentManager.printToText();
                     break;
                 case 8:
                     return;

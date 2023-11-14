@@ -1,7 +1,4 @@
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import Exception.InputException;
 
@@ -9,7 +6,11 @@ public class StudentManager {
     ArrayList<Student> studentManager = new ArrayList<>();
 
     public StudentManager() {
-//        studentManager = (ArrayList<Student>) readAndWriteFile.readFile();
+    }
+
+    public void readFromFile() {
+        studentManager = (ArrayList<Student>) readAndWriteFile.readFile();
+        System.out.println("File đã được đọc thành công");
     }
 
     private readAndWriteFile readAndWriteFile = new readAndWriteFile();
@@ -20,8 +21,13 @@ public class StudentManager {
         }
     }
 
-    public void readFile() {
-        readAndWriteFile.readFile();
+    public void printToText() throws IOException {
+        FileWriter fileWriter = new FileWriter("Data/StudentList.csv");
+        PrintWriter pw = new PrintWriter(fileWriter);
+        for (Student student: studentManager) {
+            pw.println(student);
+        }
+        pw.close();
     }
 
     public void addStudent() {
